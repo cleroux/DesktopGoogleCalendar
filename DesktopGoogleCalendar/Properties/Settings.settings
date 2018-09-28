@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopGoogleCalendar.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowPosition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Right</Value>
+    </Setting>
+    <Setting Name="RunAtStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ApiClientSecretsFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ClockFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Tahoma, 26pt</Value>
+    </Setting>
+    <Setting Name="ClockFontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="EventFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Tahoma, 11pt</Value>
+    </Setting>
+    <Setting Name="DateFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Tahoma, 12pt</Value>
+    </Setting>
+    <Setting Name="TodayFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Tahoma, 16pt</Value>
+    </Setting>
+    <Setting Name="TodayFontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="DateFontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
