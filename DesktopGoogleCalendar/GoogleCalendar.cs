@@ -16,11 +16,11 @@ namespace DesktopGoogleCalendar
     class GoogleCalendar
     {
         // Event callbacks
-        private Action initFail = null;
+        private Action<Exception> initFail = null;
         /// <summary>
         /// Called if the Calendar service initialization fails.
         /// </summary>
-        public Action InitFail
+        public Action<Exception> InitFail
         {
             set
             {
@@ -40,11 +40,11 @@ namespace DesktopGoogleCalendar
             }
         }
 
-        private Action loadFail = null;
+        private Action<Exception> loadFail = null;
         /// <summary>
         /// Called if reading Calendar data fails.
         /// </summary>
-        public Action LoadFail
+        public Action<Exception> LoadFail
         {
             set
             {
@@ -89,7 +89,7 @@ namespace DesktopGoogleCalendar
         }
 
         // States
-        private bool initialized = false;
+        public bool initialized = false;
         private bool loaded = false;
 
         // Calendar data
@@ -124,14 +124,15 @@ namespace DesktopGoogleCalendar
 
                 colors = service.Colors.Get().Execute();
 
-                initialized = true;
-                if (initSuccess != null) { initSuccess(); }
+                this.initialized = true;
+                initSuccess?.Invoke();
             }
             catch (Exception e)
             {
+                
+                
                 initialized = false;
-                if (initFail != null) { initFail(); }
-                MessageBox.Show("Error:" + e.GetBaseException().Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                initFail?.Invoke(e);
                 return false;
             }
             return true;
@@ -183,24 +184,18 @@ namespace DesktopGoogleCalendar
                         {
                             d = DateTime.Parse(e.Start.Date);
                         }
-                        //events.Add(new CalendarEvent(cal.Id, e.Summary, d.Date, getCalendarColor(cal.Id)));
                         events.Add(new CalendarEvent(cal.Id, e.Summary, d, getCalendarColor(cal.Id)));
                     }
                 }
                 loaded = true;
                 events = events.OrderBy(o => o.DateTime).ToList();
 
-                if (loadSuccess != null) { loadSuccess(); }
-
+                loadSuccess?.Invoke();
                 result = GetEvents();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                if (loadFail != null)
-                {
-                    loadFail();
-                }
-                return false;
+                loadFail?.Invoke(ex); return false;
             }
 
             return result;
